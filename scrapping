@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+url="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen"
+response=requests.get(url)
+filename="temp.html"
+soup=BeautifulSoup(response.text,'html.parser')
+
+text=soup.prettify()
+print(text)
+with open(filename,"w+") as f:
+    f.write(text)
